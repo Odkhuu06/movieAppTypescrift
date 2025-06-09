@@ -2,10 +2,14 @@ import { Movie } from "@/types/movie";
 import { Star } from "lucide-react";
 import Link from "next/link";
 type MovieCardProps = {
-  movie: Movie;
+  id: number;
+  title: string;
+  imageUrl: string;
+  vote_average: number;
+  poster_path: string;
 };
 
-export const MovieCardUrl = ({ title, id , imageUrl,vote_average }: Movie) => {
+export const MovieCardUrl = ({ title, id , imageUrl,vote_average}:MovieCardProps ) => {
   
   return (
     <div className="flex flex-col">

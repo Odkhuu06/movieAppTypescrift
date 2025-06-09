@@ -1,7 +1,7 @@
 
 'use client'
 
-import { MovieCardUrl } from "@/app/components/MovieCardUrl";
+import {MovieCardUrl} from "@/app/components/MovieCardUrl"
 import { Movie } from "@/types/movie";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";

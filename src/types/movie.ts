@@ -5,11 +5,13 @@ export type Movie = {
   vote_average: number;
   poster_path: string;
   key: number;
-  overview: number;
+  overview: string;
   backdrop_path: string;
   index: number;
-  videoId:number
+  videoId:string
   name: string;
   site: string;
   type: string;
+ total_pages:[]
+ results:[]
 };

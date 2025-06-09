@@ -1,17 +1,24 @@
 import { Movie } from "@/types/movie";
 import { Link, Star } from "lucide-react";
- type MovieCardProps = {
-   movie: Movie;
- };
+import { MovieTrailer } from "./MovieTrailer";
+type MovieCarouselItemProps = {
+  id: number;
+  title: string;
+  imageUrl: string;
+  vote_average: number;
+  overview: string;
+  backdrop_path:string
+};
+
 export const MovieCarouselItem = ({
   id,
   title,
   imageUrl,
   vote_average,
   overview,
-}:Movie) => {
+}:MovieCarouselItemProps) => {
   return (
-    <div className="relative max-w-[1440px] mx-auto overflow-hidden">
+    <div className="relative min-h-[400px] max-w-[1440px] mx-auto overflow-hidden">
       <Link href={`/Details/${id}`}>
         <img
           src={imageUrl}
@@ -38,7 +45,7 @@ export const MovieCarouselItem = ({
             </div>
           </div>
           <p className="text-xs sm:text-sm line-clamp-3">{overview}</p>
-          {/* <MovieTrailer movieId={id} /> */}
+          <MovieTrailer movieId={id} />
         </div>
       </div>
     </div>
