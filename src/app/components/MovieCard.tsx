@@ -1,13 +1,13 @@
 import { Star } from "lucide-react";
 import Link from "next/link";
-type MovieCard = {
+type MovieCardProps = {
   id: number;
   title: string;
   vote_average: number;
   poster_path:string
 };
 
-export const MovieCard = ({ poster_path, vote_average, title, id }:MovieCard) => {
+export const MovieCard = ({ poster_path, vote_average, title, id }:MovieCardProps) => {
     return (
         <div className="flex flex-col">
             <Link href={`/Details/${id}`}>

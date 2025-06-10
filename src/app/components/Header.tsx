@@ -1,5 +1,8 @@
 import { cn } from "@/lib/utils";
 import { Film, Search } from "lucide-react";
+import { DarkToggle } from "./Dark";
+import { HeaderGenre } from "@/Genre/HeaderGenre";
+;
 
 export const Header = () => {
   return (
@@ -8,7 +11,7 @@ export const Header = () => {
           <Film color="#4338CA" />
           <p className="text-[16px] text-[#4338CA] ">Movie Z</p>
         </div>
-      {/* <HeaderGenre /> */}
+      <HeaderGenre/>
       <div className="flex align-bottom ">
         <div className={cn("relative text-muted-foreground", "w-[379px]")}>
           <Search
@@ -18,7 +21,7 @@ export const Header = () => {
           {/* <HeaderSearch /> */}
         </div>
       </div>
-      {/* <DarkToggle/> */}
+      <DarkToggle/>
     </div>
   );
 };

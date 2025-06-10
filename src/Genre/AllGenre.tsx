@@ -1,22 +1,12 @@
+'use client'
 
-import { Movie } from "@/types/movie";
-import { Badge } from "lucide-react";
-import {
-  parseAsArrayOf,
-  parseAsInteger,
-  useQueryState,
-} from "next-usequerystate";
-import { useRouter } from "next/router";
+import { Genre } from "@/types/movie";
 import { useEffect, useState } from "react";
 
-
 export const AllGenres = () => {
-  const router = useRouter();
-  const [genres, setGenres] = useState<Movie[]>([]);
-
-
   
-
+  const [genres, setGenres] = useState<Genre>();
+  
   const getMovieGenres = async () => {
     try {
       const response = await fetch(
@@ -41,14 +31,12 @@ export const AllGenres = () => {
     getMovieGenres();
   }, []);
 
-  const handleSelectGenre = (id, name) => {
+  const handleSelectGenre = (id:string, name:string) => {
     // const newGenreIds = genreIds.includes(id)
     //   ? genreIds.filter((t) => t !== id)
     //   : [...genreIds, id];
     // setGenreIds(id);
-    router.push(`/genres?genreIds=${id}`);
   };
-
 
   return (
     <div className="flex flex-wrap gap-4 bg-white">
@@ -59,13 +47,6 @@ export const AllGenres = () => {
         >
           {genre.name}
         </div>
-        // <Badge
-        //   key={i}
-        //   className="w-fit bg-white text-foreground hover:bg-none text-[12px] font-bold dark:bg-black light:bg-white"
-        //   onClick={() => handleSelectGenre(genre.id, genre.name)}
-        // >
-        //   gg
-        // </Badge>
       ))}
     </div>
   );

@@ -1,15 +1,15 @@
+"use client";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { AllGenres } from "./AllGenre";
+import { AllGenres } from "./components/AllGenre";
 import { Footer } from "@/app/components/Footer";
-import { Movie } from "@/types/movie";
+import { Movie, MovieDetails } from "@/types/movie";
 import { MovieCard } from "@/app/components/MovieCard";
 import { Separator } from "@/components/ui/separator";
 
 const GenreSelect = () => {
-  const [genreMovies, setGenreMovie] = useState<Movie>({});
-  const router = useRouter();
-  const genreIds = router.query.genreIds;
+  const [genreMovies, setGenreMovie] = useState<MovieDetails[]>([]);
+
  
 const updatedGenreIds =
   typeof genreIds === 'string'
@@ -17,8 +17,6 @@ const updatedGenreIds =
     : Array.isArray(genreIds)
       ? genreIds
       : [];
-
-   console.log( updatedGenreIds);
 
   const getMovieGenres = async () => {
     try {
@@ -33,7 +31,6 @@ const updatedGenreIds =
         }
       );
 
-
       const movies = await response.json();
       setGenreMovie(movies);
     } catch (error) {
@@ -44,8 +41,9 @@ const updatedGenreIds =
   useEffect(() => {
     getMovieGenres();
   }, [genreIds]);
-console.log("genreMovies?.results:::::::::",genreMovies?.results);
-console.log(genreMovies);
+  console.log(genreMovies);
+  
+console.log();
 
   return (
     <div className="max-w-[1280px] mx-auto">
