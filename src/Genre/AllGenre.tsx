@@ -42,6 +42,7 @@ export const AllGenres = () => {
     <div className="flex flex-wrap gap-4 bg-white">
       {genres?.genres?.map((genre, i) => (
         <div
+        key={genre.id}
           onClick={() => handleSelectGenre(genre.id, genre.name)}
           className="w-fit bg-white text-foreground hover:bg-none text-[12px] font-bold"
         >

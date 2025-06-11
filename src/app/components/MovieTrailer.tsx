@@ -30,7 +30,7 @@ export const MovieTrailer = ({ movieId }: MovieCardProps) => {
         <Button>Watch Trailer</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-fit">
-            {/* <DialogTitle> */}
+            <DialogTitle>Trailer</DialogTitle>
         {movieTrailer?.key && (
           <YouTube
             videoId={String(movieTrailer.key)}
@@ -43,7 +43,6 @@ export const MovieTrailer = ({ movieId }: MovieCardProps) => {
             }}
           />
         )}
-{/* </DialogTitle> */}
       </DialogContent>
     </Dialog>
   );
