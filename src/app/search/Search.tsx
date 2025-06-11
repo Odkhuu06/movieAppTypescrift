@@ -1,12 +1,14 @@
+'use client'
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { SearchResult } from "./SearchResult";
+import { Movie } from "@/types/movie";
 
 export const HeaderSearch = () => {
   const [searchValue, setSearchValue] = useState("");
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState<Movie[]>([]);
 
   const searchMovie = async () => {
     try {
@@ -31,17 +33,18 @@ export const HeaderSearch = () => {
   useEffect(() => {
     searchMovie();
   }, [searchValue]);
-  const router =useRouter()
-
+  // const router =useRouter()
   return (
     <div className="relative">
       <Input
         onChange={(event) => setSearchValue(event.target.value)}
-          onKeyDown={(e) => {
-    if (e.key === "Enter" && searchValue.trim()) {
-      router.push(`/searchResult?query=${encodeURIComponent(searchValue.trim())}`);
-    }
-  }}
+        // onKeyDown={(e) => {
+        //   if (e.key === "Enter" && searchValue.trim()) {
+        //     router.push(
+        //       `/searchResult?query=${encodeURIComponent(searchValue.trim())}`
+        //     );
+        //   }
+        // }}
         value={searchValue}
         type="text"
         placeholder="Search..."

@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import { Film, Search } from "lucide-react";
 import { DarkToggle } from "./Dark";
 import { HeaderGenre } from "@/Genre/HeaderGenre";
+import { HeaderSearch } from "../search/Search";
 ;
 
 export const Header = () => {
@@ -18,7 +19,7 @@ export const Header = () => {
             size={16}
             className="absolute -translate-y-1/2 left-3 top-1/2"
           />
-          {/* <HeaderSearch /> */}
+          <HeaderSearch />
         </div>
       </div>
       <DarkToggle/>

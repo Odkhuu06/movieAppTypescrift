@@ -1,4 +1,3 @@
-import { Movie } from "@/types/movie";
 import { Star } from "lucide-react";
 import Link from "next/link";
 type MovieCardProps = {

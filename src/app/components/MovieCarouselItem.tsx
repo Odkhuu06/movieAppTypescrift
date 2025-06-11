@@ -2,28 +2,19 @@ import { Movie } from "@/types/movie";
 import { Link, Star } from "lucide-react";
 import { MovieTrailer } from "./MovieTrailer";
 type MovieCarouselItemProps = {
-  id: number;
-  title: string;
-  imageUrl: string;
-  vote_average: number;
-  overview: string;
-  backdrop_path:string
+  movie: Movie;
 };
 
-export const MovieCarouselItem = ({
-  id,
-  title,
-  imageUrl,
-  vote_average,
-  overview,
-}:MovieCarouselItemProps) => {
+export const MovieCarouselItem = ({ movie }: MovieCarouselItemProps) => {
+  const imageUrl = `${process.env.NEXT_PUBLIC_TMDB_IMAGE_SERVICE_URL}/original${movie.backdrop_path}`;
+
   return (
     <div className="relative min-h-[400px] max-w-[1440px] mx-auto overflow-hidden">
-      <Link href={`/Details/${id}`}>
+      <Link href={`/Details/${movie.id}`}>
         <img
           src={imageUrl}
-          alt={title}
-          className="w-full h-[246px] sm:h-[320px] md:h-[480px] lg:h-[600px] object-cover"
+          alt={movie.title}
+          className="w-full h-96  sm:h-[320px] md:h-[480px] lg:h-[600px] object-cover"
         />
       </Link>
 
@@ -33,19 +24,19 @@ export const MovieCarouselItem = ({
             <div>
               <p className="text-xs sm:text-sm">Now Playing:</p>
               <p className="text-lg font-semibold sm:text-xl md:text-2xl">
-                {title}
+                {movie.title}
               </p>
             </div>
             <div className="flex items-center gap-1">
               <Star className="w-4 h-4 text-amber-300 fill-amber-300" />
               <p className="text-base font-semibold">
-                {vote_average.toFixed(1)}
+                {movie.vote_average.toFixed(1)}
               </p>
               <p className="text-base font-medium text-gray-300">/10</p>
             </div>
           </div>
-          <p className="text-xs sm:text-sm line-clamp-3">{overview}</p>
-          <MovieTrailer movieId={id} />
+          <p className="text-xs sm:text-sm line-clamp-3">{movie.overview}</p>
+          <MovieTrailer movieId={movie.id} />
         </div>
       </div>
     </div>

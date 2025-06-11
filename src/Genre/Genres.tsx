@@ -1,7 +1,7 @@
 "use client";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { AllGenres } from "./components/AllGenre";
+import { AllGenres } from "./AllGenre";
 import { Footer } from "@/app/components/Footer";
 import { Movie, MovieDetails } from "@/types/movie";
 import { MovieCard } from "@/app/components/MovieCard";
@@ -9,7 +9,8 @@ import { Separator } from "@/components/ui/separator";
 
 const GenreSelect = () => {
   const [genreMovies, setGenreMovie] = useState<MovieDetails[]>([]);
-
+  const router = useRouter();
+  const genreIds = router.query.genreIds;
  
 const updatedGenreIds =
   typeof genreIds === 'string'

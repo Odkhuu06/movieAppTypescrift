@@ -1,4 +1,10 @@
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/carousel";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/carousel";
 import { MovieCarouselItem } from "./MovieCarouselItem";
 import { Movie } from "@/types/movie";
 import Autoplay from "embla-carousel-autoplay";
@@ -6,31 +12,27 @@ import Autoplay from "embla-carousel-autoplay";
 type MovieCardProps = {
   nowPlayingMovie: Movie[];
 };
+
 export const MovieCarousel = ({ nowPlayingMovie }: MovieCardProps) => {
   return (
     <div>
       <Carousel
         className="relative"
-      plugins={[
-        Autoplay({
-          delay: 2000,
-        }),
-      ]}
+        plugins={[
+          Autoplay({
+            delay: 2000,
+          }),
+        ]}
       >
-        <CarouselContent >
+        <CarouselContent>
           {nowPlayingMovie?.slice(0, 5).map((movie, index) => {
+            console.log(movie.backdrop_path);
+
             const imageUrl = `${process.env.NEXT_PUBLIC_TMDB_IMAGE_SERVICE_URL}/original${movie.backdrop_path}`;
             return (
               <CarouselItem key={index}>
                 <div>
-                  <MovieCarouselItem
-                    id={movie.id}
-                    title={movie.title}
-                    imageUrl={imageUrl}
-                    vote_average={movie.vote_average}
-                    overview={movie.overview}
-                    backdrop_path={movie.backdrop_path}
-                  />
+                  <MovieCarouselItem movie={movie} />
                 </div>
               </CarouselItem>
             );

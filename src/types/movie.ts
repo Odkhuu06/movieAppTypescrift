@@ -1,54 +1,8 @@
 export type Movie = {
-  id: number;
-  title: string;
-  imageUrl: string;
-  vote_average: number;
-  poster_path: string;
-  key: number;
-  overview: string;
-  backdrop_path: string;
-  index: number;
-  videoId:string
-  name: string;
-  site: string;
-  type: string;
- total_pages:[]
- results:[]
-};
-export type Genre={
-  genres:{
-    id:string 
-    name:string
-  }[]
-}
-export type GenreMovies={
-  total_pages:[]
-  results:[]
-  movie:[]
-}
-
-export type MovieTrailerProps = {
-  id: string;
-  iso_639_1: string;
-  iso_3166_1: string;
-  key: string;
-  name: string;
-  official: boolean;
-  published_at: string;
-  site: string;
-  size: number;
-  type: string;
-  movieId:number
-};
-
-
-export type MovieDetails = {
   adult: boolean;
-  movies:GenreMovies[]
   backdrop_path: string;
   budget: number;
   genres: Genre[];
-  movie:number;
   id: number;
   imdb_id: string;
   origin_country: string[];
@@ -63,7 +17,53 @@ export type MovieDetails = {
   status: string;
   tagline: string;
   title: string;
-  video: boolean;
+  video: vidio[];
   vote_average: number;
   vote_count: number;
+  results:[]
+};
+export type MovieTrailerProps = {
+  id: string;
+  iso_639_1: string;
+  iso_3166_1: string;
+  key: string;
+  name: string;
+  official: boolean;
+  published_at: string;
+  site: string;
+  size: number;
+  type: string;
+};
+
+export type MovieCastAndCrewType = {
+  adultP: boolean;
+  cast_id: number;
+  character: string;
+  credit_id: string;
+  gender: number;
+  id: number;
+  known_for_department: string;
+  job: string;
+  department: string;
+  profile_path: string;
+  name: string;
+  popularity: number;
+  crew: [];
+  cast: [];
+};
+
+export type MovieTeamType = {
+  id: number;
+  cast: MovieCastAndCrewType[];
+  crew: MovieCastAndCrewType[];
+};
+
+export type Genre = {
+  id: number;
+  name: string;
+};
+export type vidio = {
+  id: number;
+  name: string;
+  vidio: boolean;
 };

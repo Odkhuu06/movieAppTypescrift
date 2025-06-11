@@ -6,9 +6,10 @@ import { TopRated } from "@/movies/Toprated.";
 import { Popular } from "@/movies/Popular";
 import { useEffect, useState } from "react";
 import { MovieCarousel } from "./components/MovieCarousel";
+import { Movie } from "@/types/movie";
 
 export default function Home() {
-  const [nowPlayingMovie, setNowPlayingMovie] = useState([]);
+  const [nowPlayingMovie, setNowPlayingMovie] = useState<Movie[]>([]);
   const getNowPlayingMovies = async () => {
     try {
       const responce = await fetch(
@@ -30,6 +31,7 @@ export default function Home() {
   useEffect(() => {
     getNowPlayingMovies();
   }, []);
+  
   return (
     <div>
       <Header />
