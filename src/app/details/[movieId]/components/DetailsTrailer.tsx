@@ -1,3 +1,4 @@
+"use client";
 import { Button } from "@/components/button";
 import { MovieTrailerProps } from "@/types/movie";
 import { getMovieTrailer } from "@/utils/getMovieTariler";

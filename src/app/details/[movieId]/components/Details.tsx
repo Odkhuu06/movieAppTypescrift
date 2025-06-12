@@ -1,9 +1,9 @@
-import { MovieDetails } from "@/types/movie";
+import {  MovieDetailProps } from "@/types/movie";
 import { DetailsCont } from "./DetailsCont"
 import { DetailsHeader } from "./DetailsHeader"
 import { DetailsImg } from "./DetailsImg"
 
-export const Details=({movie}:{movie:MovieDetails})=>{
+export const Details=({movie}:{movie:MovieDetailProps})=>{
     console.log(movie);
     
     return (

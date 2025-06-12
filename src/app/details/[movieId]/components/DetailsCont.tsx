@@ -1,6 +1,6 @@
-import { MovieDetails } from "@/types/movie"
+import {MovieDetailProps } from "@/types/movie"
 
-export const DetailsCont=({movie}:{movie:MovieDetails})=>{ 
+export const DetailsCont=({movie}:{movie:MovieDetailProps})=>{ 
     
     return(
 <div className="max-w-[1080]">

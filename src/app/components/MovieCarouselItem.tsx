@@ -1,16 +1,17 @@
 import { Movie } from "@/types/movie";
-import { Link, Star } from "lucide-react";
+import {  Star } from "lucide-react";
 import { MovieTrailer } from "./MovieTrailer";
+import Link from "next/link";
 type MovieCarouselItemProps = {
   movie: Movie;
 };
 
 export const MovieCarouselItem = ({ movie }: MovieCarouselItemProps) => {
-  const imageUrl = `${process.env.NEXT_PUBLIC_TMDB_IMAGE_SERVICE_URL}/original${movie.backdrop_path}`;
+  const imageUrl = `${process.env.NEXT_PUBLIC_TMDB_IMAGE_SERVICE_URL}/original/${movie.backdrop_path}`;
 
   return (
     <div className="relative min-h-[400px] max-w-[1440px] mx-auto overflow-hidden">
-      <Link href={`/Details/${movie.id}`}>
+      <Link href={`/details/${movie.id}`}>
         <img
           src={imageUrl}
           alt={movie.title}

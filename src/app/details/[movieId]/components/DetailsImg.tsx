@@ -1,7 +1,7 @@
-import { MovieDetails } from "@/types/movie";
+import {MovieDetailProps } from "@/types/movie";
 import { MovieTrailer } from "./DetailsTrailer";
 
-export const DetailsImg = ({ movie }:{movie:MovieDetails}) => {
+export const DetailsImg = ({ movie }:{movie:MovieDetailProps}) => {
   const imageUrl = `${process.env.NEXT_PUBLIC_TMDB_IMAGE_SERVICE_URL}/original${movie?.poster_path}`;
   const backdropUrl = `${process.env.NEXT_PUBLIC_TMDB_IMAGE_SERVICE_URL}/original${movie?.backdrop_path}`;
 

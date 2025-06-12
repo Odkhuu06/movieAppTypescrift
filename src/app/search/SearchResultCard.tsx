@@ -1,20 +1,20 @@
 import { Movie } from "@/types/movie";
 import { Separator } from "@radix-ui/react-dropdown-menu";
 import { ArrowRight, Star } from "lucide-react";
-import { useRouter } from "next/router";
-type SearchProps={
-  movie:Movie
-  setSearchValue:string
-}
-export const SearchResultCard = ({ movie, setSearchValue }:SearchProps) => {
+import { useRouter } from "next/navigation";
+type SearchProps = {
+  movie: Movie;
+  setSearchValue: (value: string) => void;
+};
+export const SearchResultCard = ({ movie, setSearchValue }: SearchProps) => {
   const { original_title, poster_path, popularity, release_date, id } = movie;
 
-  // const router = useRouter();
+  const router = useRouter();
 
   const imageUrl = `${process.env.NEXT_PUBLIC_TMDB_IMAGE_SERVICE_URL}/original/${poster_path}`;
   const handleSeeMore = () => {
-    // setSearchValue("");
-    // router.push(`/Details/${id}`);
+    setSearchValue("");
+    router.push(`/Details/${id}`);
   };
   return (
     <div className="p-3">
@@ -26,7 +26,9 @@ export const SearchResultCard = ({ movie, setSearchValue }:SearchProps) => {
           <p>{original_title}</p>
           <p className="flex items-center text-sm">
             <Star className="w-4 h-4 text-amber-300 fill-amber-300" />
-            <span className="font-semibold">{popularity.toFixed(1)}</span>
+            <span className="font-semibold">
+              {typeof popularity === "number" ? popularity.toFixed(1) : "N/A"}
+            </span>
             <span className="ml-1 text-gray-500">/10</span>
           </p>
           <div className="flex justify-between w-full">

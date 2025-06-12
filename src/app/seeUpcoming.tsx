@@ -1,6 +1,6 @@
 import { DarkToggle } from "@/app/components/Dark";
-import { useQueryState, parseAsInteger } from 'nuqs';
 import { MovieCardUrl } from "@/app/components/MovieCardUrl";
+import { useQueryState, parseAsInteger } from 'nuqs';
 import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@/components/ui/pagination";
 import { Movie } from "@/types/movie";
 import { useEffect, useState } from "react";
@@ -10,6 +10,7 @@ const seeUpcoming = (id:string) => {
   const [upcomingMovies, setUpcomingMovies] = useState<Movie[]>([]);
   const [page, setPage] = useQueryState("page", parseAsInteger.withDefault(1));
     const [totalPage, setTotalPage] = useState(0);
+    useEffect(() => {
   const fetchUpcoming = async () => {
     try {
       const response = await fetch(
@@ -25,22 +26,45 @@ const seeUpcoming = (id:string) => {
 
       const data = await response.json();
       setUpcomingMovies(data.results);
+      setTotalPage(data.total_pages);
     } catch (error) {
       console.error(error);
     }
   };
-fetchUpcoming()
-  useEffect(() => {
-    const fetchMovies = async () => {
-      setUpcomingMovies(data?.results);
-      setTotalPage(data?.total_pages);
-    };
-    fetchMovies();
-  }, [page]);
+
+  fetchUpcoming();
+}, [page]);
+
+//   const fetchUpcoming = async () => {
+//     try {
+//       const response = await fetch(
+//         `${process.env.NEXT_PUBLIC_TMDB_BASE_URL}/movie/upcoming?language=en-US&page=${page}`,
+//         {
+//           method: "GET",
+//           headers: {
+//             accept: "application/json",
+//             Authorization: `Bearer ${process.env.NEXT_PUBLIC_TMDB_API_TOKEN}`,
+//           },
+//         }
+//       );
+
+//       const data = await response.json();
+//       setUpcomingMovies(data.results);
+//     } catch (error) {
+//       console.error(error);
+//     }
+//   };
+// fetchUpcoming()
+//   useEffect(() => {
+//     const fetchMovies = async () => {
+//       setUpcomingMovies(data?.results);
+//       setTotalPage(data?.total_pages);
+//     };
+//     fetchMovies();
+//   }, [page]);
   const previous = () => {
     setPage(page - 1);
   };
-
   const selectPage = (pageNumber:number) => {
     setPage(pageNumber);
   };

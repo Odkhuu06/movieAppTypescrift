@@ -20,7 +20,53 @@ export type Movie = {
   video: vidio[];
   vote_average: number;
   vote_count: number;
-  results:[]
+  results: ResultsProps[];
+};
+export type ResultsProps = {
+  adult: boolean;
+  backdrop_path:string;
+  genre_ids: number[];
+  id: number;
+  original_language: string;
+  original_title:string;
+  overview: string;
+  popularity: number;
+  poster_path: string;
+  release_date: string;
+  title: string;
+  video: boolean;
+  vote_average: number;
+  vote_count:number;
+};
+export type Genre = {
+  id: number;
+  name: string;
+}[];
+
+export type MovieDetailProps = {
+  adult: boolean;
+  backdrop_path: string;
+  belongs_to_collection: null;
+  budget: number;
+  genre: Genre[];
+  homepage: string;
+  id: number;
+  imdb_id: string;
+  origin_country: string[];
+  original_language: string;
+  original_title: string;
+  overview: string;
+  popularity: number;
+  poster_path: number;
+  release_date: number;
+  revenue: number;
+  runtime: number;
+  status: string;
+  tagline: string;
+  title: string;
+  video: boolean;
+  vote_average: number;
+  vote_count: number;
 };
 export type MovieTrailerProps = {
   id: string;
@@ -56,11 +102,6 @@ export type MovieTeamType = {
   id: number;
   cast: MovieCastAndCrewType[];
   crew: MovieCastAndCrewType[];
-};
-
-export type Genre = {
-  id: number;
-  name: string;
 };
 export type vidio = {
   id: number;

@@ -3,7 +3,8 @@ import { Film, Search } from "lucide-react";
 import { DarkToggle } from "./Dark";
 import { HeaderGenre } from "@/Genre/HeaderGenre";
 import { HeaderSearch } from "../search/Search";
-;
+
+
 
 export const Header = () => {
   return (

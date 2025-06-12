@@ -39,7 +39,7 @@ export const Upcoming = () => {
     <div className="mx-auto max-w-7xl">
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-[24px] font-semibold">Upcoming</h3>
-        <Link href={`/seeUpcoming`}>
+        <Link href={`/my-app/src/app/seeUpcoming.tsx`}>
         <div className="flex items-center gap-1 text-blue-500 cursor-pointer">
           <p>See more</p>
           <ArrowRight />

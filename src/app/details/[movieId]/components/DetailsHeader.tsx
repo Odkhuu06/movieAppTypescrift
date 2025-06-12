@@ -1,7 +1,6 @@
-import { MovieDetails } from "@/types/movie";
+import { MovieDetailProps} from "@/types/movie";
 import { Star } from "lucide-react";
-
-export const DetailsHeader = ({ movie }:{movie:MovieDetails}) => {
+export const DetailsHeader = ({ movie }:{movie: MovieDetailProps}) => {
   const formatRuntime = (minutes:number) => {
     if (!minutes) return;
     const hours = Math.floor(minutes / 60);

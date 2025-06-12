@@ -2,30 +2,33 @@
 
 import { useEffect, useState } from "react";
 
-import { MovieDetails } from "@/types/movie";
+import {MovieDetailProps} from "@/types/movie";
 import { MovieTrailer } from "@/app/components/MovieTrailer";
 import { getMovieById } from "@/utils/getMovieById";
+import { Details } from "./Details";
 
 export const MovieDetail = ({ movieId }: { movieId: number }) => {
-  const [movie, setMovie] = useState<MovieDetails>();
+  const [movie, setMovie] = useState<MovieDetailProps>();
 
   useEffect(() => {
     const getMovie = async () => {
-      if (!movieId) return;
-      try {
-        const data = await getMovieById(movieId);
-        setMovie(data);
-      } catch (error) {
-        console.error("Failed to fetch movie:", error);
-      }
+      const res = await fetch(`https://api.themoviedb.org/3/movie/${movieId}`, {
+        headers: {
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_TMDB_API_TOKEN}`,
+        },
+      });
+      const data = await res.json();
+      setMovie(data);
     };
 
     getMovie();
   }, [movieId]);
-  console.log(movie);
+  console.log(movieId);
   return (
     <div>
-      <MovieTrailer movieId={movieId} />
+      <Details movie={movie!}/>
+      {movie && <Details movie={movie} />}
+
     </div>
   );
 };
